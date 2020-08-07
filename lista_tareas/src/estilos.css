@@ -1,0 +1,108 @@
+* {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+}
+
+html { height:100%; }
+
+body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-image: linear-gradient(to right top, #008793, #008698, #00869c,
+   #0085a0, #0084a4, #0089a7, #008eaa, #0093ad, #009ead, #00a9a9, #11b3a1, #3ebc96);
+}
+
+.listaDeTareas {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2em;
+  width: calc(100% - 4em);
+}
+
+.listaDeTareas h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.listaDeTareas input {
+  padding: 1em;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  width: 400px;
+  outline: none;
+  color: white;
+  font-size: 1em;
+  text-align: center;
+}
+
+.listaDeTareas input:hover {
+  cursor: pointer;
+}
+
+.listaDeTareas div > button {
+  border-radius: 10px;
+  border: none;
+  color: #eee;
+  padding: 1em;
+  margin-left: 2em;
+  font-weight: bold;
+  background-color: rgb(95, 127, 134);
+  box-shadow: 4px 5px 6px rgba(0, 0, 0, .4);
+  transition: transform .4s linear;
+  outline: none;
+}
+
+.listaDeTareas div > button:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+}
+
+.listaDeTareas ul {
+  list-style: none;
+  padding: 2em 1em;
+  max-height: 70vh;
+  overflow: auto;
+}
+
+.listaDeTareas ul li {
+  align-items: center;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 4px 5px 6px rgba(0, 0, 0, .4);
+  color: gray;
+  display: flex;
+  justify-content: space-between;
+  padding: .5em 2em;
+  margin-bottom: 1em;
+  transition: padding .4s linear;
+}
+
+.listaDeTareas ul li:hover { 
+  cursor: pointer;
+  padding: .7em 2.2em;
+}
+
+.listaDeTareas ul li svg {
+  border-radius: 50%;
+  padding: .3em;
+  transition: background-color .4s linear;
+}
+
+.listaDeTareas ul li svg:hover {
+  background-color: rgb(214, 214, 214);
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  .listaDeTareas input {
+    width: 280px;
+    margin-bottom: 1em;
+  }
+}
