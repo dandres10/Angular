@@ -1,0 +1,107 @@
+
+<!-- table -->
+
+   <div class="row  buscador">
+          <div class="col-10"></div>
+       <div class="col  ">
+         <mat-form-field class="example-full-width">
+             <mat-label>Buscar...</mat-label>
+             <input #termino type="text" class="form-control" matInput  (keyup)="buscar(termino.value)">
+         </mat-form-field>	
+       </div>
+   </div>
+
+ 
+  
+<div class=" mat-elevation-z8">
+
+    <table mat-table [dataSource]="dataSource" >
+
+      
+      <ng-container matColumnDef="posicion">
+        <th mat-header-cell *matHeaderCellDef> <button mat-stroked-button  class="float-left" (click)="limpiarFiltro()" >Limpiar filtro</button></th>
+        <td mat-cell *matCellDef="let element"> {{element.posicion}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="host">
+    
+        <th mat-header-cell *matHeaderCellDef>  Lider Go
+          <button class="btn-lider1" mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="ordenarAZLider12()"> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar A - Z</button>
+            </mat-menu>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.host}} </td>
+        </ng-container>
+    
+      
+        <ng-container matColumnDef="typeGo">
+          <th mat-header-cell *matHeaderCellDef> Tipo 
+          <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <!-- <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Hombres</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Mujeres</button> -->
+              </mat-menu>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.typeGo == "1" || element.typeGo == "GO" ? 'Go': 'N/A' }} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef> Estado 
+            <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="filtrarEstado(true)"> <mat-icon class="menuArrows" >filter_list</mat-icon>Activo</button>
+              <button mat-menu-item (click)="filtrarEstado(false)"> <mat-icon class="menuArrows">filter_list</mat-icon>Inactivo</button>
+            </mat-menu>
+  
+          </th>
+          <td mat-cell *matCellDef="let element">  {{element.status == true ? 'Activo': 'Inactivo'}}<mat-icon></mat-icon> </td> 
+        </ng-container>
+  
+        <ng-container matColumnDef="leader">
+          <th mat-header-cell *matHeaderCellDef> Lider 12
+            <button class="btn-lider1" mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item  (click)=" ordenarAZLiderGo()"> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar A - Z</button>
+              </mat-menu>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.leader}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="reporteSemana">
+          <th mat-header-cell *matHeaderCellDef> Reportar </th>
+          <td mat-cell *matCellDef="let element">
+            
+            <button mat-raised-button (click)="reporteSemanaDialog(element)" color="primary">{{element.reporteSemana}}</button>
+            </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element"> 
+            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="openDialogEditar(element)" (keyup.enter)="openDialogEditar(element)" > <mat-icon>edit</mat-icon>Editar</button>
+                <button mat-menu-item (click)="openDialogVer(element)" (keyup.enter)="openDialogVer(element)"> <mat-icon>remove_red_eye</mat-icon> Ver</button>
+                <button mat-menu-item (click)="openDialogReporte(element)"(keyup.enter)="openDialogReporte(element)"><mat-icon>description</mat-icon> Reporte</button>
+                <!-- <button mat-menu-item><mat-icon>cloud_download</mat-icon> Descargar</button> -->
+                <button mat-menu-item (click)="openDialogCerrar(element)"(keyup.enter)="openDialogCerrar(element)"><mat-icon>close</mat-icon> Cerrar GO</button>
+              </mat-menu>
+          </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+    
+              
+          
+  <!-- fin table  -->
+
+  

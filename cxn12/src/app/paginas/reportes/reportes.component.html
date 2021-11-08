@@ -1,0 +1,136 @@
+<mat-progress-bar *ngIf="cargador" class="w-100" mode="indeterminate" ></mat-progress-bar>
+
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col" >
+            <div class="card p-3 mt-3 cardGo">
+                <div class="row">
+                    <div class="col-12">
+                        <h4> Reporte Lider </h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        
+                    </div>
+                    <div class="col">
+                        <div class="card-body ">
+                            <app-table-reporte-lider ></app-table-reporte-lider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col">
+            <div class="card p-3 mt-3 cardGo">
+                <div class="row">
+                    <div class="col-12">
+                        <h4> Reporte estado celula </h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="formularioEstadoCelula" (submit)="reporteEstadoCelulaBtn()" >
+                        <mat-form-field appearance="fill" class="select pl-4">
+                            <mat-label>Lider</mat-label>
+                            <mat-select disableRipple type="select" formControlName="lider">
+                              <mat-option *ngFor="let item of listaLideresResponse" [value]="item.id" >{{item.name}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <mat-form-field appearance="fill" class="select" class="pl-5">
+                            <mat-label>Estado</mat-label>
+                            <mat-select type="select" formControlName="estado">
+                              <mat-option value="1">Activa</mat-option>
+                              <mat-option value="2">Inactiva</mat-option>
+                              
+                              
+                            </mat-select>
+                            
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" class="btn-nueva ml-5" type="submit" >Buscar<mat-icon class="icon-nueva pl-1" >search</mat-icon></button>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <div class="card-body ">
+                            <app-table-reporte-estado-celula></app-table-reporte-estado-celula>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    <!-- <div class="row">
+        <div class="col">
+            <div class="card p-3 mt-3 cardGo">
+                <div class="row">
+                    <div class="col-12">
+                        <h4> Reporte Seguimiento Go </h4>
+                        <hr>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <form [formGroup]="formulario" (submit)="buscarReporte()" >
+                        <div class="row">
+                            <div class="col">
+                                <mat-form-field appearance="fill" class="pl-4 ">
+                                    <mat-label>Rango fechas</mat-label>
+                                    <mat-date-range-input  [rangePicker]="picker">
+                                      <input matStartDate formControlName="start" placeholder="Start date">
+                                      <input matEndDate formControlName="end" placeholder="End date">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+                                
+                                <mat-form-field appearance="fill" class="select" class="pl-5">
+                                    <mat-label>Estado</mat-label>
+                                    <mat-select type="select" formControlName="estado">
+                                      <mat-option value="1">Activa</mat-option>
+                                      <mat-option value="2">Inactiva</mat-option>
+                                      
+                                      
+                                    </mat-select>
+                                    
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" class="select pl-4">
+                                    <mat-label>Lider</mat-label>
+                                    <mat-select disableRipple type="select" formControlName="lider">
+                                      <mat-option *ngFor="let item of listaLideresResponse" [value]="item.id" >{{item.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <button mat-raised-button color="primary" class="btn-nueva ml-5" type="submit" >Buscar<mat-icon class="icon-nueva pl-1" >search</mat-icon></button>
+                          </div>
+                          
+                          <div class="col">
+                              <mat-form-field class="example-full-width float-right pr-5">
+                                  <mat-label>Buscar...</mat-label>
+                                  <input matInput placeholder="Ej. An...">
+                              </mat-form-field>	
+                          </div>
+                          
+                      </div>
+                    </form>
+                  </div>
+                  <div class="col">
+                      <div class="card-body ">
+                        <app-table-reporte-seguimiento></app-table-reporte-seguimiento>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>  
+  </div> -->
+  <br>
+  <br>
+  <br>
+</div>
+
+
+                      
+                                  
+                                    

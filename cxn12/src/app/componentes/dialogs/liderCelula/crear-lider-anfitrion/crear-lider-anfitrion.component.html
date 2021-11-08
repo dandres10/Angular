@@ -1,0 +1,57 @@
+<form [formGroup]="formulario" >
+<div class="row">
+    <div class="col">
+        Crear Lider 
+      
+        <hr>
+    </div><br><br>
+    
+    <div class="col-12">
+        <h6 class="pb-2">Datos</h6>
+       
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill" class="select" >
+                    <mat-label>Tipo documento</mat-label>
+                    <mat-select type="select" formControlName="tipoDocumento">
+                      <mat-option *ngFor="let item of tipoDocumentos" value={{item.id}}>{{item.description}}</mat-option>
+                     
+                    </mat-select>
+                    
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Numero de documento</mat-label>
+                    <input matInput  type="text" formControlName="numeroDocumento"
+                           placeholder="Ex. pat@example.com">
+                </mat-form-field>
+            </div>
+            <div class="col">
+                <div class="col"><button mat-raised-button (click)="consultarLider()" color="primary">Consultar</button></div>
+            </div>
+            
+        </div>
+    </div>
+  
+    <div class="col-12">
+        <hr>
+        <div class="row">
+            <div class="col" *ngIf="estadoConsulta">
+                Nombre: <br> {{consultaLider[0].name}} {{consultaLider[0].lastName}} {{consultaLider[0].lastNameSecond}}
+            </div>
+            <div class="col" *ngIf="estadoConsulta">
+                Tipo identificacion:<br> {{consultaLider[0].documentType}} 
+            </div>
+            <div class="col" *ngIf="estadoConsulta">
+                Numero identificación: <br>{{consultaLider[0].documentNumber}} 
+            </div>
+            <div class="col">
+                <div class="col" *ngIf="estadoConsulta" ><button mat-raised-button (click)="CrearLiderAnfitrion()" color="primary">Crear lider</button></div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</form>
+

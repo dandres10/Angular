@@ -1,0 +1,58 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <div class="container-fluid">
+
+        <div class="row justify-content-between">
+          <div class="col ">
+            <h1 class="example-app-name ">Conexion<strong>12</strong></h1>
+          </div>
+          <div class="col text-right">
+            <span class="align-baseline">{{usuarioLogeado.userName}}</span>
+            
+          </div>
+        </div>
+      </div>
+      
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+            <mat-accordion *ngFor="let nav of modulos" class="acordion">
+                <mat-expansion-panel
+                  (opened)="panelOpenState = true"
+                  (closed)="panelOpenState = false"
+                >
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <mat-label class="item-title"><img style="height: 25px; padding-right: 10px;" [src]="nav.icon" alt="logoConexion12"> {{nav.name}} </mat-label>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+               
+                  <button  class="items btnMenu text-left"  *ngFor="let item of nav.itemsHijasMenu" [routerLink]="item.router"> <div>{{item.name}}</div>  </button>
+             
+                </mat-expansion-panel>
+                
+              </mat-accordion>
+              <button class="btnOuput text-left pl-5" style="position: absolute; top: 90%;" mat-flat-button  *ngFor="let item of fillerNavButton"  (click)="cerrarSesion()">{{item.name}} <mat-icon>{{item.icon}}</mat-icon> </button>
+        </mat-nav-list>
+
+      </mat-sidenav>
+      <mat-sidenav-content>
+        
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+        
+  
+  <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>
+                    
+                  
+  
+           
+
+ 

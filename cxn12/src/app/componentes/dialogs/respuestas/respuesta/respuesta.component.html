@@ -1,0 +1,13 @@
+<div class="text-center">
+
+  <h1 mat-dialog-title *ngIf="respuesta.tipoNotificacion == 2"  style="color: red;"><mat-icon>error_outline</mat-icon></h1>
+  <h1 mat-dialog-title *ngIf="respuesta.tipoNotificacion == 3" style="color: red;" ><mat-icon>warning</mat-icon></h1>
+  <h1 mat-dialog-title *ngIf="respuesta.tipoNotificacion == 1" style="color: green;"><mat-icon>thumb_up_alt</mat-icon></h1>
+  <div mat-dialog-content style="color: red;" *ngIf="respuesta.tipoNotificacion == 2">{{respuesta.mensaje}}</div>
+  <div mat-dialog-content style="color: red;" *ngIf="respuesta.tipoNotificacion == 3">{{respuesta.mensaje}}</div>
+  <div mat-dialog-content style="color: green;" *ngIf="respuesta.tipoNotificacion == 1">{{respuesta.mensaje}}</div>
+
+  <div mat-dialog-actions class="d-flex justify-content-center">
+    <button mat-button mat-dialog-close>Cerrar</button>
+  </div>
+</div> 

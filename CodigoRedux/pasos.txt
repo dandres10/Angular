@@ -1,0 +1,128 @@
+1. ng new Redux
+2. https://ngrx.io/guide/store/install
+3. https://ngrx.io/guide/store-devtools/install
+4. npm install @ngrx/store --save -> instalar ngrx.io
+5. npm install @ngrx/store-devtools --save -> instalar complemento de chrome
+6. ReduxDevTools -> Extencion de Chrome -> https://chrome.google.com/webstore/category/extensions?hl=es
+7. boostrap instalar -> https://getbootstrap.com/docs/4.5/getting-started/introduction/
+8. Crear dos paguinas tabla 1 y tabla 2
+9. Crear carpeta modelos 
+10. Crear la clase person
+11.crear carpeta componentes
+12. crear componente menu -> ng g c components/menu
+13. menu html 
+------------------------------------------------------------------------------------------------------------
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand">Redux</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/inicio']" fragment="uno" >Inicio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/inicio']" fragment="dos" >Inicio 2</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/inicio']" fragment="tres" >Inicio 3</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+------------------------------------------------------------------------------------------------------------
+14. carpeta services -> ng g s services/context
+15. crear metodo getListPerson() -> sumilacion de un servicio
+------------------------------------------------------------------------------------------------------------
+listPerson: Person[] =
+    [
+      {
+        nombre: 'Camila',
+        edad: 25
+      },
+      {
+        nombre: 'Camilo',
+        edad: 30
+      },
+      {
+        nombre: 'Mauricio',
+        edad: 35
+      },
+      {
+        nombre: 'Andrea',
+        edad: 18
+      },
+      {
+        nombre: 'Felipe',
+        edad: 15
+      },
+      {
+        nombre: 'Carlos',
+        edad: 38
+      }
+    ];
+    
+  constructor() { }
+
+  getListPerson() {
+    return this.listPerson;
+  }
+------------------------------------------------------------------------------------------------------------
+16. rutas
+------------------------------------------------------------------------------------------------------------
+const routes: Routes = [
+  { path: 'tabla1', component: Tabla1Component },
+  { path: 'tabla2', component: Tabla2Component },
+  { path: '**', pathMatch: 'full', redirectTo: 'tabla1' }
+];
+------------------------------------------------------------------------------------------------------------
+17. app.componet 
+------------------------------------------------------------------------------------------------------------
+<app-menu></app-menu>
+<router-outlet></router-outlet>
+------------------------------------------------------------------------------------------------------------
+18. menu asignamos las rutas
+19. Crear carpeta redux/reductorPerson
+20. archivo person.action.ts
+------------------------------------------------------------------------------------------------------------
+import { createAction, props } from '@ngrx/store';
+import { Person } from '../../models/person';
+
+export const crearPerson = createAction('[Person] Crea person', props<Person>());
+export const editarPerson = createAction('[Person] Editar person', props<Person>());
+export const limpiarPerson = createAction('[Person] Limpiar person');
+------------------------------------------------------------------------------------------------------------
+21. archivo person.reducer.ts
+------------------------------------------------------------------------------------------------------------
+import { createReducer, on } from '@ngrx/store';
+import { Person } from '../../models/person';
+import { crearPerson, limpiarPerson } from './person.actions';
+
+export const estadoIncial: Person[] = [];
+
+const _personReducer = createReducer(
+    estadoIncial,
+    on(crearPerson, (state, listaReporteCelula) => [
+        ...state,
+        listaReporteCelula,
+    ]),
+    on(limpiarPerson, (state) => estadoIncial)
+);
+
+export function personReducer(state, action) {
+    return _personReducer(state, action);
+}
+------------------------------------------------------------------------------------------------------------
+22. configurar los estados a nivel global 
+------------------------------------------------------------------------------------------------------------
+StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, 
+      logOnly: environment.production
+    })
+------------------------------------------------------------------------------------------------------------
+
+

@@ -1,0 +1,41 @@
+<mat-progress-bar *ngIf="cargador" class="w-100" mode="indeterminate" ></mat-progress-bar>
+<div class="container-fluid" *ngIf="listaCelulasResponse">
+  <div class="row ">
+      <div class="col-12">
+       <div class="card p-3 mt-3 cardGo">
+         <div class="row justify-content-between">
+           <div class="col-xs-3 col-ms-3">
+             <h3 class="pl-3 pr-5">Go</h3> 
+            
+            </div>
+            <div class="col-xs-9 col-ms-9 align-self-center pr-5 pl-3">
+                 Seguimiento semanal GO
+            </div>  
+          </div>
+
+          <hr>
+           
+           <div class="card-body ">
+             <div class="row justify-content-between">
+                 <div class="col-2 contenedorBtnNuevo">
+                   <button mat-raised-button color="primary" class="btn-nueva" (click)="nuevaCelulaDialog()" >Nueva Go<mat-icon class="icon-nueva">add</mat-icon></button>
+                   
+                 </div>
+                 
+                </div>
+               <div class="row mt-4">
+                 <div class="col-12">
+                   <app-tablecelula1></app-tablecelula1>
+                 </div>
+               </div>
+             </div>
+           </div>
+        </div>
+    </div>
+ </div>
+ 
+                 
+
+                      
+                      
+       

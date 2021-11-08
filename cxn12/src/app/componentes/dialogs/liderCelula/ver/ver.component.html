@@ -1,0 +1,61 @@
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    Ver Go
+                    <hr>
+                </div>
+            </div>
+            <div class="col-12">
+            <div class="row">
+                <div class="col-4">
+                    <mat-list class="text-left itemsLista">
+                        <mat-list-item><strong>Nombre:</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.name}}</label> 
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Barrio:</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.neighborhood}}</label>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Localidad:</strong></mat-list-item>
+                        <label class="itemDatos"> - </label>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Email:</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.email}}</label>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Documento</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.documentNumber}}</label>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Telefono fijo:</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.movil}}</label>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Movil:</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.phone}}</label>
+                        <mat-divider></mat-divider>
+                        <mat-list-item><strong>Direccion:</strong></mat-list-item>
+                        <label class="itemDatos">{{liderAnfitrionResponse.address}}</label>
+                      </mat-list>
+                </div>
+                <div class="col-8">
+                    <app-table-lider-celulas-acargo [celulaListaNew]="celulaListaNew"></app-table-lider-celulas-acargo>
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col">
+                    <div class="col"><button  mat-raised-button mat-dialog-close color="accent">Cerrar</button></div></div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+</mat-dialog-content>
+          
+              
+            
+
+

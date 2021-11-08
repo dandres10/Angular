@@ -1,0 +1,114 @@
+<!-- 'posicion',
+'topic',
+'year',
+'month',
+'week',
+'month',
+'done',
+'numberAttendess', -->
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      
+      <ng-container matColumnDef="posicion">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.posicion}} </td>
+      </ng-container>
+  
+      
+      <ng-container matColumnDef="topic">
+        <th mat-header-cell *matHeaderCellDef>  Tema Go
+          <button class="btn-lider1" mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar A - Z</button>
+            </mat-menu>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.topic}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="year">
+          <th mat-header-cell *matHeaderCellDef> Año 
+          <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Si</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>No</button>
+              </mat-menu>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+        </ng-container>
+    
+        
+        <ng-container matColumnDef="month">
+          <th mat-header-cell *matHeaderCellDef> Mes 
+            <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Mayor a Menor</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Menor a Mayor</button>
+            </mat-menu>
+  
+          </th>
+          <td mat-cell *matCellDef="let element">  {{element.month}}<mat-icon></mat-icon> </td> 
+        </ng-container>
+
+        <ng-container matColumnDef="week">
+          <th mat-header-cell *matHeaderCellDef> Semana 
+            <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Mayor a Menor</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Menor a Mayor</button>
+            </mat-menu>
+  
+          </th>
+          <td mat-cell *matCellDef="let element">  {{element.week}}<mat-icon></mat-icon> </td> 
+        </ng-container>
+
+        <ng-container matColumnDef="done">
+          <th mat-header-cell *matHeaderCellDef> Se realizo 
+            <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Mayor a Menor</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Menor a Mayor</button>
+            </mat-menu>
+  
+          </th>
+          <td mat-cell *matCellDef="let element">  {{element.done == true ? 'Si':  'No'}}<mat-icon></mat-icon> </td> 
+        </ng-container>
+
+        <ng-container matColumnDef="numberAttendess">
+          <th mat-header-cell *matHeaderCellDef> Asistentes 
+            <button  mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Mayor a Menor</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Menor a Mayor</button>
+            </mat-menu>
+  
+          </th>
+          <td mat-cell *matCellDef="let element">  {{element.numberAttendess}}<mat-icon></mat-icon> </td> 
+        </ng-container>
+  
+        <!-- <ng-container matColumnDef="donaciones">
+          <th mat-header-cell *matHeaderCellDef> Donaciones 
+            <button class="btn-lider1" mat-button [matMenuTriggerFor]="menu"><mat-icon class="arrows">south</mat-icon></button>
+              <mat-menu #menu="matMenu">
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Mayor a Menor</button>
+                <button mat-menu-item> <mat-icon class="menuArrows">filter_list</mat-icon>Organizar Menor a Mayor</button>
+              </mat-menu>
+          </th>
+          <td mat-cell *matCellDef="let element"> {{element.donaciones}} </td>
+        </ng-container>
+   -->
+        
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+              
+          
+  <!-- fin table  -->
+
+  

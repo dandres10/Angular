@@ -1,0 +1,56 @@
+<mat-dialog-content class="mat-typography">
+<div class="row">
+    <div class="col-12">
+       Ver Go
+       <hr>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col">
+                <mat-list class="text-left itemsLista">
+                    <mat-list-item><strong>Creada:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.creationDate| date}}</label> 
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Direccion:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.address}}</label>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Dia de reunion:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.day}}</label>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Hora:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.hour}}</label>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Lider Go:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.leader}}</label>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Telefono fijo:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.phone}}</label>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Movil:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.movil}}</label>
+                    <mat-divider></mat-divider>
+                    <mat-list-item><strong>Lider:</strong></mat-list-item>
+                    <label class="itemDatos">{{dialogDatos.host}}</label>
+                  </mat-list>
+            </div>
+            <div class="col">
+                <div class="row text-center">
+                    <div class="col">
+                        <p>Total miembros</p>
+                        <h1>{{dialogDatos.numberMembers}}</h1>
+                        <p>Tipo celula</p>
+                        <h2>{{dialogDatos.typeGo}}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-5 justify-content-end">
+        <div class="row ">
+          <div class="col-10"></div>
+          
+          <div class="col"><button  mat-raised-button mat-dialog-close color="accent">Cerrar</button></div>
+        </div>
+      </div>
+</div>
+</mat-dialog-content>

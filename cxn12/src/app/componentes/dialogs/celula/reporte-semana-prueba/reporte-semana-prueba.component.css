@@ -1,0 +1,30 @@
+.select {
+    font-size: 12px;
+    
+  }
+  
+  .mat-form-field + .mat-form-field {
+    margin-left: 8px;
+  }
+  
+  .example-section {
+    margin: 12px 0;
+  }
+  
+  .example-margin {
+    margin: 0 12px;
+  }
+  
+  ul {
+    list-style-type: none;
+    margin-top: 4px;
+  }
+
+  .titulo{
+    font-size: 20px;
+  }
+
+  .subtitulo{
+    margin-bottom: 0px ;
+    opacity: 0.5;
+  }

@@ -1,0 +1,74 @@
+<form [formGroup]="formulario" (ngSubmit)="editarGo()" (keyup.enter)="editarGo()" >
+<div class="row">
+    <div class="col">
+        Editar Go
+        <hr>
+    </div>
+    <div class="col-12">
+        <h6 class="pb-2">Datos</h6>
+        <div class="row">
+            <div class="col">
+                <mat-form-field appearance="fill" class="select" >
+                    <mat-label>Dia</mat-label>
+                    <mat-select type="select"  
+                                formControlName="dia"
+                                [class.is-invalid]="diaNoValido">
+                      <mat-option value="Lunes">Lunes</mat-option>
+                      <mat-option value="Martes">Martes</mat-option>
+                      <mat-option value="Miercoles">Miercoles</mat-option>
+                      <mat-option value="Jueves">Jueves</mat-option>
+                      <mat-option value="Viernes">Viernes</mat-option>
+                      <mat-option value="Sabado">Sabado</mat-option>
+                      <mat-option value="Domingo">Domingo</mat-option>
+                      
+                    </mat-select>
+                    
+                </mat-form-field><br>
+                <mat-label class="errorFormulario" *ngIf="diaNoValido">{{
+                    mensajeErrorFormularioDia
+                  }}</mat-label>
+            </div>
+            <div class="col">
+                
+                <mat-form-field >
+                    <mat-label>Hora</mat-label>
+                    <input class="mano" 
+                           type="time" 
+                           matInput 
+                           placeholder="Ej. 10:30" 
+                           formControlName="hora"
+                           [class.is-invalid]="horaNoValido"
+                            >
+                  </mat-form-field>	<br>
+                  <mat-label class="errorFormulario" *ngIf="horaNoValido">{{
+                    mensajeErrorFormularioHora
+                  }}</mat-label>
+            </div>
+            <div class="col">
+                <mat-form-field appearance="fill" class="select">
+                    <mat-label>Tipo Go</mat-label>
+                    <mat-select disableRipple 
+                                type="select"  
+                                formControlName="tipoGo"
+                                [class.is-invalid]="tipoGoNoValido">
+                      <mat-option value="1">Go</mat-option>
+                    </mat-select>
+                </mat-form-field><br>
+                <mat-label class="errorFormulario" *ngIf="tipoGoNoValido">{{
+                    mensajeErrorFormularioTipoGo
+                  }}</mat-label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12 mt-5 justify-content-end">
+        <div class="row ">
+            <div class="col-9"></div>
+            <div class="col"><button mat-raised-button type="submit" color="primary" >Editar Go</button></div>
+            <div class="col"><button  mat-raised-button mat-dialog-close color="accent">Cerrar</button></div>
+        </div>
+    </div>
+</div>
+</form>
+                      
+                      

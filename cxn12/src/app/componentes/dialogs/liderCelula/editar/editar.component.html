@@ -1,0 +1,95 @@
+<form [formGroup]="formulario" (ngSubmit)="editarLiderAnfitrion()" (keyup.enter)="editarLiderAnfitrion()" >
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <div class="col-12">
+            Editar líder
+            <hr>
+        </div>
+        <div class="col-12">
+            <div class="titulo">Datos</div>
+            <div class="row text-center">
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombres</mat-label>
+                        <input matInput placeholder="Ej. An..." type="text" formControlName="nombres">
+                    </mat-form-field>	
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput placeholder="Ej. An..." formControlName="apellidos" type="text">
+                    </mat-form-field>	
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Correo</mat-label>
+                        <input matInput placeholder="Ej. An..." type="email" formControlName="correo">
+                    </mat-form-field>	
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row text-center">
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Movil</mat-label>
+                        <input matInput placeholder="Ej. 321990..." type="text" formControlName="movil">
+                    </mat-form-field>	
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Telefono Fijo</mat-label>
+                        <input matInput placeholder="Ej. 576..." type="text" formControlName="telefonoFijo">
+                    </mat-form-field>	
+                </div>
+                <div class="col">
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Direccion</mat-label>
+                            <input matInput placeholder="Ej. Carrera 111 A..." type="text" formControlName="direccion">
+                        </mat-form-field>	
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row text-center">
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Barrio</mat-label>
+                        <input matInput placeholder="Ej. Fontanar" type="text" formControlName="barrio">
+                    </mat-form-field>	
+                   
+                </div>
+                <div class="col">
+                    <!-- <mat-form-field class="example-full-width">
+                        <mat-label>Localidad</mat-label>
+                        <input matInput placeholder="Ej. Fontanar" type="text" formControlName="localidad">
+                    </mat-form-field>	 -->
+                </div>
+                <div class="col-4">
+                    
+                </div>
+            </div>
+           
+                
+            
+        </div>
+        
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col"><button mat-raised-button  type="submit" color="primary" >Editar</button></div>
+                <div class="col"><button  mat-raised-button mat-dialog-close color="accent">Cerrar</button></div>
+            </div>
+        </div>
+
+    </div>
+
+</mat-dialog-content>
+</form>                     
+                          
+
+<!-- 
+ -->

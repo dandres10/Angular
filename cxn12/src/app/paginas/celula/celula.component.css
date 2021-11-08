@@ -1,0 +1,30 @@
+.rangoFecha {
+    font-size: 13px;
+    
+  }
+
+  .btn-nueva{
+    
+      margin-bottom: 15px;
+  }
+
+  .contenedorBtnNuevo{
+
+      padding-left:0px ;
+  }
+
+  .mat-form-field-wrapper{
+     margin: 0px;
+  }
+
+  .cardGo {
+    box-shadow: 4px 4px 8px gray;
+  }
+
+  .icon-nueva{
+    font-size: 20px;
+    
+  }
+
+
+  

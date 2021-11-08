@@ -1,0 +1,84 @@
+<mat-progress-bar *ngIf="estadoCargadorGlobal" class="w-100" mode="indeterminate" ></mat-progress-bar>
+<div class="contenedorLogin" >
+    <div class="container-fluid" >
+      <div class="row justify-content-center align-items-center vh-100">
+        <div class="col-sm-3 col-md-3 col-lg-3 text-center" data-aos="zoom-in">
+          <mat-card class="cardLogin">
+            <mat-card-title class="mb-4 mt-4">
+              <img style="height: 100px;" src="assets/img/logoConexion12.png" ><br /><br />
+              <mat-label>Conexión<strong>12</strong></mat-label>
+            </mat-card-title>
+            <mat-card-subtitle>
+              Inicie sesión
+            </mat-card-subtitle>
+            <hr />
+            <mat-card-content>
+              <form
+                class="example-form"
+                [formGroup]="formulario"
+                (ngSubmit)="iniciarSesion()"
+                (keyup.enter)="iniciarSesion()"
+              >
+                <div class="form-group"></div>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Correo</mat-label>
+                  <input
+                    matInput
+                    class="form-control"
+                    type="email"
+                    formControlName="correo"
+                    placeholder="Ex. pat@example.com"
+                    [class.is-invalid]="correoNoValido"
+                  />
+                </mat-form-field>
+                <mat-label class="errorFormulario" *ngIf="correoNoValido">{{
+                  mensajeErrorFormularioCorreo
+                }}</mat-label>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Contraseña</mat-label>
+                  <input
+                    matInput
+                    class="form-control"
+                    type="password"
+                    placeholder="Ex. Contraseña"
+                    formControlName="contrasena"
+                    [class.is-invalid]="contrasenaNoValida"
+                  />
+                  <mat-icon
+                    *ngIf="!contrasenaNoValida"
+                    class="mr-2 icon-contrasena"
+                    matSuffix
+                    >remove_red_eye</mat-icon
+                  >
+                </mat-form-field>
+                <mat-label class="errorFormulario" *ngIf="contrasenaNoValida">{{
+                  mensajeErrorFormularioContrasena
+                }}</mat-label>
+                <mat-card-actions>
+                  <button
+                    mat-raised-button
+                    color="primary"
+                    type="submit"
+                    class="mb-2"
+                  >
+                    Ingresar</button
+                  ><br />
+                  <small *ngIf="mensajeError" class="mensajeError">{{
+                    mensajeError
+                  }}</small>
+                </mat-card-actions>
+                <mat-card-footer class="p-4">
+                  <small class="olvidoContrasena"
+                    >¿Olvidaste tu contraseña?</small
+                  >
+                </mat-card-footer>
+              </form>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+

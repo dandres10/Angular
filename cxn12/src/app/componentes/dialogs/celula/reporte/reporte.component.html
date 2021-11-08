@@ -1,0 +1,59 @@
+
+<mat-dialog-content class="mat-typography">
+<div class="row">
+        <div class="col-12">
+            Reporte Go
+            <hr>
+        </div>
+    
+    <div class="col-12">
+        <div class="row">
+            <!-- <div class="col-10">
+                <mat-form-field appearance="fill" class="rangoFecha">
+                    <mat-label>Fecha</mat-label>
+                    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                      <input matStartDate formControlName="start" placeholder="Fecha inicial">
+                      <input matEndDate formControlName="end" placeholder="Fecha final">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                  </mat-form-field>
+            </div> -->
+            <div class="col-10"></div>
+           <div class="col ">
+               <button mat-raised-button color="primary" class="btn-nueva">Generar reporte </button>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 justify-content-end">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col ">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Buscar...</mat-label>
+                    <input matInput placeholder="Ej. An...">
+                </mat-form-field>	
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="row">
+            <div class="col">
+                <app-table-celula-reporte [celula]="celula"></app-table-celula-reporte>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 mt-5 mb-3 justify-content-end">
+        <div class="row ">
+            <div class="col-10"></div>
+            
+            <div class="col"><button  mat-raised-button mat-dialog-close color="accent">Cerrar</button></div>
+        </div>
+    </div>
+</div>
+</mat-dialog-content>
+
+        
+
+
+            

@@ -1,0 +1,93 @@
+<form [formGroup]="formulario" (ngSubmit)="agregarCelula()" (keyup.enter)="agregarCelula()" >
+<mat-dialog-content class="mat-typography">
+    <div class="row">
+        <div class="col-12">
+            Agregar Go
+            <hr>
+        </div>
+        <div class="col-12">
+            <div class="titulo">Datos</div>
+            <div class="row text-center">
+                <div class="col">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Fecha de apertura</mat-label>
+                        <input matInput [matDatepicker]="picker"  formControlName="fechaApertura">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill" class="select"  >
+                        <mat-label>Tipo Go</mat-label>
+                        <mat-select disableRipple type="select" formControlName="tipoGo" >
+                          <mat-option *ngFor="let item of listaTipoCelulasResponse" value={{item.ticeId}} [title]="item.textoInformativo">{{item.ticeCodigo}}</mat-option>
+                          
+                          
+                        </mat-select>
+                    </mat-form-field>	
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill" class="select">
+                        <mat-label>Estado</mat-label>
+                        <mat-select disableRipple type="select" formControlName="estado">
+                          <mat-option value="1">Activa</mat-option>
+                          <mat-option value="2">Inactiva</mat-option>
+                          
+                        </mat-select>
+                    </mat-form-field>	
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row text-center">
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Hora</mat-label>
+                        <input matInput type="time" placeholder="Ej. 10:35" formControlName="hora">
+                    </mat-form-field>	
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill" class="select">
+                        <mat-label>Lider</mat-label>
+                        <mat-select disableRipple type="select" formControlName="lider">
+                          <mat-option *ngFor="let item of listaLideresResponse" [value]="item.id" >{{item.name}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field appearance="fill" class="select">
+                        <mat-label>Dias</mat-label>
+                        <mat-select disableRipple type="select" formControlName="dia">
+                          <mat-option value="Lunes">Lunes</mat-option>
+                          <mat-option value="Martes">Martes</mat-option>
+                          <mat-option value="Miercoles">Miercoles</mat-option>
+                          <mat-option value="Jueves">Jueves</mat-option>
+                          <mat-option value="Viernes">Viernes</mat-option>
+                          <mat-option value="Sabado">Sabado</mat-option>
+                          <mat-option value="Domingo">Domingo</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        
+                          
+                          
+
+        <div class="col-12">
+            <div class="row">
+                <div class="col-10"></div>
+                <div class="col"><button mat-raised-button mat-dialog-close type="submit" color="primary" >Agregar</button></div>
+                <div class="col"><button  mat-raised-button mat-dialog-close color="accent">Cancelar</button></div>
+            </div>
+        </div>
+
+    </div>
+
+</mat-dialog-content>
+</form>
+
+
+                          
+                          
+                          

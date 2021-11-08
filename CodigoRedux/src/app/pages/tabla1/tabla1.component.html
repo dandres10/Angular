@@ -1,0 +1,68 @@
+<h1>Personas Tabla 1</h1>
+
+<div class="container">
+    <div class="row pt-5">
+        <div class="col-4"> 
+            <label> Id</label>
+            <input type="text" class="form-control"  [(ngModel)]="id">
+        </div>
+        <div class="col-4"> 
+            <label > Nombre</label>
+            <input type="text" class="form-control" [(ngModel)]="nombre">
+        </div>
+        <div class="col-12">
+            <label> Edad</label>
+            <input type="text" class="form-control" [(ngModel)]="edad">
+        </div>
+    </div>
+   
+    
+    
+    
+    <div class="row pt-4">
+        <div class="col-8"></div>
+        <div class="col-1 btnAction" >
+            <button  *ngIf="!stateEdit" type="button" class="btn btn-primary" (click)="savePerson()">Guardar</button>
+            <button  *ngIf="stateEdit" type="button" class="btn btn-primary" (click)="editarPerson()">Editar</button>
+           
+        </div>
+        <div class="col-1 btnAction">
+            
+            <button type="button" class="btn btn-primary" (click)="listClean()">Limpiar</button>
+        </div>
+        <div class="col-1 btnAction">
+            
+            <button   type="button" class="btn  btn-danger" (click)="cancelAction()">Cancelar</button>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Color</th>
+                    
+                    <th scope="col">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of listPerson">
+                    <th scope="row">{{item.id}}</th>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.edad}}</td>
+               
+                  
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="loadEdit(item)">Editar</button>
+                        <button type="button" class="btn btn-danger btn-sm" (click)="deletePerson(item)">Eliminar</button>
+                        
+                    </td>
+                  </tr>
+                  
+              </tbody>
+            </table>
+      </div>
+  </div>
+</div>
