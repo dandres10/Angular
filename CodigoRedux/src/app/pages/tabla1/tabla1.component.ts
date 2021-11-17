@@ -4,6 +4,10 @@ import { AppState } from '../../Redux/reductores/app.reducer';
 import { Person } from '../../models/person';
 import { ContextService } from '../../services/context.service';
 import { crearPerson, editarPerson, eliminarPerson, limpiarListPerson } from '../../Redux/reductorPerson/person.actions';
+import { AnyEventObject, interpret, Interpreter } from 'xstate';
+import { waterMachine } from '../../stateMachine/water-machine'
+import { playerMachine } from '../../stateMachine/player-machine'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-tabla1',
@@ -17,14 +21,18 @@ export class Tabla1Component implements OnInit {
   id: number;
   nombre: string;
   edad: number;
+  promisePlayerMachine: Interpreter<unknown, any, AnyEventObject, { value: any; context: unknown; }>
+  observable: Observable<null>
 
   constructor(private store: Store<AppState>,
     private _contextService: ContextService) {
   }
 
   ngOnInit(): void {
-    this.getListPersonService();
-    this.suscribirEstadoCargadorGlobalRedux();
+    this.getListPersonService()
+    this.suscribirEstadoCargadorGlobalRedux()
+    // this.waterMachine()
+    this.playerMachine()
   }
 
   suscribirEstadoCargadorGlobalRedux() {
@@ -35,20 +43,15 @@ export class Tabla1Component implements OnInit {
     this.listPerson = this._contextService.getListPerson();
     this.loadPersonRedux(this.listPerson);
   }
-    
-    
-    
 
-  listClean(){
-    this.store.dispatch(limpiarListPerson()); 
+  listClean() {
+    this.store.dispatch(limpiarListPerson());
   }
-      
-   
 
   loadPersonRedux(person: Person[]) {
     //#region  Solucion
     this.store.dispatch(limpiarListPerson());
-     //#endregion
+    //#endregion
     person.forEach((element) => {
       this.store.dispatch(crearPerson(element));
     })
@@ -97,6 +100,34 @@ export class Tabla1Component implements OnInit {
     console.log(item)
     this.store.dispatch(eliminarPerson(item));
   }
+
+  waterMachine = () => {
+    const promiseService = interpret(waterMachine).onTransition((state) =>
+
+      console.log(state.value)
+
+    );
+
+    promiseService.start()
+    promiseService.send({ type: 'HEAT' });
+    promiseService.send({ type: 'HEAT' });
+    promiseService.send({ type: 'FREEZE' });
+    promiseService.send({ type: 'FREEZE' });
+    promiseService.send({ type: 'FREEZE' });
+  }
+
+  playerMachine = () => {
+    this.promisePlayerMachine =
+      interpret(playerMachine('stop')).onTransition((state) =>
+        console.log(state.value)
+      );
+
+    this.promisePlayerMachine.start()
+  }
+
+
+
+
 
 
 }
