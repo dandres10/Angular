@@ -1,0 +1,21 @@
+<div *ngIf="stateMachine == 'liquid'">
+    Liquido
+</div>
+
+<div *ngIf="stateMachine == 'ice'" >
+  Hielo
+</div>
+
+<div *ngIf="stateMachine == 'gas'" >
+ Gas
+</div>
+
+<div *ngIf="stateMachine == 'plasma'">
+  Plasma
+</div>
+
+<button   type="button" class="btn btn-primary" (click)="HEAT()">Calor</button>
+<button   type="button" class="btn btn-primary" (click)="FREEZE()">Frio</button>
+
+
+
