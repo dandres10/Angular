@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { ManagerMachine } from 'src/app/machines/water-machine/water-machine.class';
-import { STATES_WATER_MACHINE, TRANSITIONS, waterMachine } from 'src/app/machines/water-machine/water-machine.xstate';
-import { interpret, StateValue } from 'xstate';
+import { MachineState } from 'src/app/machines/water-machine/water-machine.class';
+import { CodeCountry, TRANSITIONS_WATER_MACHINE, waterMachine } from 'src/app/machines/water-machine/water-machine.xstate';
+import { StateValue } from 'xstate';
 
 @Component({
   selector: 'app-water-state-manager',
@@ -16,34 +16,23 @@ export class WaterStateManagerComponent implements OnInit {
   stateMachine!: StateValue;
 
 
-  constructor(private mangerMachine: ManagerMachine) { }
+  constructor(public mangerMachine: MachineState) { }
 
   ngOnInit(): void {
     this.sub1 = new Observable(subscriber => {
       subscriber.next(this.buildMachine());
-      subscriber.next(this.currentStateMachine());
-      subscriber.next(this.mangerMachine.transition(TRANSITIONS.HEAT));
-      subscriber.next(this.mangerMachine.transition(TRANSITIONS.FREEZE));
-      subscriber.next(this.mangerMachine.transition(TRANSITIONS.FREEZE));
-      subscriber.next(this.mangerMachine.transition(TRANSITIONS.HEAT));
-      subscriber.next(this.mangerMachine.transition(TRANSITIONS.HEAT));
       subscriber.complete();
     }).subscribe();
 
 
   }
 
-  currentStateMachine() {
-    this.sub2 =
-      this.mangerMachine.getState().subscribe((data) => { this.stateMachine = data.value; console.log(this.stateMachine) });
-  }
-
   HEAT() {
-    this.mangerMachine.transition(TRANSITIONS.HEAT)
+    this.mangerMachine.transition(TRANSITIONS_WATER_MACHINE.HEAT);
   }
 
   FREEZE() {
-    this.mangerMachine.transition(TRANSITIONS.FREEZE);
+    this.mangerMachine.transition(TRANSITIONS_WATER_MACHINE.FREEZE);
   }
 
 
@@ -62,40 +51,28 @@ export class WaterStateManagerComponent implements OnInit {
     }
     this.mangerMachine.initMachine(waterMachine,
       {
-        liquid: false,
-        ice: false,
-        gas: false,
-        plasma: false,
-      }, machineActions);
+        country: CodeCountry.CL,
+        liquid: { state: false, title: 'Liquido' },
+        ice: { state: false, title: 'Hielo' },
+        gas: { state: false, title: 'Gaseoso' },
+        plasma: { state: false, title: 'Plasma' }
+      }
+      , machineActions);
   }
 
 
   private goToLiquid() {
-    console.log('realizar algun proceso relacionado cuando esta en este estado Liquido')
+    console.log('realizar algun proceso relacionado cuando esta en este estado Liquido');
   }
   private goToIce() {
-    console.log('realizar algun proceso relacionado cuando esta en este estado de Hielo')
+    console.log('realizar algun proceso relacionado cuando esta en este estado de Hielo');
   }
   private goToGas() {
-    console.log('realizar algun proceso relacionado cuando esta en este estado de Gas')
+    console.log('realizar algun proceso relacionado cuando esta en este estado de Gas');
   }
   private goToPlasma() {
-    console.log(`realizar algun proceso relacionado cuando esta en estado de Plasma`)
+    console.log(`realizar algun proceso relacionado cuando esta en estado de Plasma`);
   }
-
-
-  waterMachine = () => {
-    const promiseService = interpret(waterMachine)
-      .onTransition((state) => console.log(state.value));
-
-    promiseService.start();
-    // promiseService.send({ type: 'HEAT' });
-    // promiseService.send({ type: 'HEAT' });
-    // promiseService.send({ type: 'FREEZE' });
-    // promiseService.send({ type: 'FREEZE' });
-
-  }
-
 
 
 }

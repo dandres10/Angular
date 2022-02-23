@@ -1,18 +1,22 @@
-<div *ngIf="stateMachine == 'liquid'">
-    Liquido
-</div>
 
-<div *ngIf="stateMachine == 'ice'" >
-  Hielo
-</div>
 
-<div *ngIf="stateMachine == 'gas'" >
- Gas
-</div>
+  <div *ngIf="mangerMachine.state.matches('liquid')">
+      Liquido
+  </div>
+  
+  <div *ngIf="mangerMachine.state.matches('ice')" >
+    Hielo
+  </div>
+  
+  <div *ngIf="mangerMachine.state.matches('gas')" >
+   Gas
+  </div>
+  
+  <div *ngIf="mangerMachine.state.matches('plasma')">
+    Plasma
+  </div>
 
-<div *ngIf="stateMachine == 'plasma'">
-  Plasma
-</div>
+  <div>{{mangerMachine.context.country}}</div>
 
 <button   type="button" class="btn btn-primary" (click)="HEAT()">Calor</button>
 <button   type="button" class="btn btn-primary" (click)="FREEZE()">Frio</button>
